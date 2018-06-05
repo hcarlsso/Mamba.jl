@@ -1,5 +1,6 @@
 #################### Posterior Plots ####################
 
+mytheme(;kwargs...) = Theme(;  kwargs..., background_color="white")
 #################### Generic Methods ####################
 
 function draw(p::Array{Plot}; fmt::Symbol=:svg, filename::AbstractString="",
@@ -96,7 +97,7 @@ function autocorplot(c::AbstractChains;
                     Scale.color_discrete(), Guide.colorkey(title="Chain"),
                     Guide.xlabel("Lag", orientation=:horizontal),
                     Guide.ylabel("Autocorrelation", orientation=:vertical),
-                    Guide.title(c.names[i]), Theme(key_position=pos))
+                    Guide.title(c.names[i]), mytheme(key_position=pos))
   end
   return plots
 end
@@ -125,7 +126,7 @@ function barplot(c::AbstractChains; legend::Bool=false,
                     Scale.color_discrete(), Guide.colorkey(title="Chain"),
                     Guide.xlabel("Value", orientation=:horizontal),
                     Guide.ylabel("Density", orientation=:vertical),
-                    Guide.title(c.names[i]), Theme(key_position=pos),
+                    Guide.title(c.names[i]), mytheme(key_position=pos),
                     Scale.y_continuous(minvalue=0.0, maxvalue=ymax))
   end
   return plots
@@ -176,7 +177,7 @@ function densityplot(c::AbstractChains; legend::Bool=false,
                     Scale.color_discrete(), Guide.colorkey(title="Chain"),
                     Guide.xlabel("Value", orientation=:horizontal),
                     Guide.ylabel("Density", orientation=:vertical),
-                    Guide.title(c.names[i]), Theme(key_position=pos))
+                    Guide.title(c.names[i]), mytheme(key_position=pos))
   end
   return plots
 end
@@ -194,7 +195,7 @@ function meanplot(c::AbstractChains; legend::Bool=false, na...)
                     Scale.color_discrete(), Guide.colorkey(title="Chain"),
                     Guide.xlabel("Iteration", orientation=:horizontal),
                     Guide.ylabel("Mean", orientation=:vertical),
-                    Guide.title(c.names[i]), Theme(key_position=pos))
+                    Guide.title(c.names[i]), mytheme(key_position=pos))
   end
   return plots
 end
@@ -220,7 +221,7 @@ function traceplot(c::AbstractChains; legend::Bool=false, na...)
                     Scale.color_discrete(), Guide.colorkey(title="Chain"),
                     Guide.xlabel("Iteration", orientation=:horizontal),
                     Guide.ylabel("Value", orientation=:vertical),
-                    Guide.title(c.names[i]), Theme(key_position=pos))
+                    Guide.title(c.names[i]), mytheme(key_position=pos))
   end
   return plots
 end
